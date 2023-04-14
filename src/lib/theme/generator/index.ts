@@ -1,11 +1,15 @@
 import type { MistBoxGenProps, MistColorProp, MistRoundedProp, MistShadowProp, MistSizeProp, MistVariantProp } from "$src/lib/types/theme";
-import classes, { mist } from "../constants";
+import classes, { mist, props } from "../constants";
 import generateRounded from "./rounded";
 import generateShadow from "./shadow";
 import generateSize from "./size";
 import generateVariant from "./variant";
 /*@ts-ignore*/
 import createShades from "colorshades";
+import mist_config from "$src/lib/mist.config";
+import format from "$src/lib/utils/formatters";
+
+const prefix = (mist_config.prefix || "m") + "-";
 
 export const boxGen = {
    // ========= Generate Variant Styles =========
@@ -44,6 +48,30 @@ export const boxGen = {
 
 const gen = {
    box: {
+      allClasses: () => {
+         let classes:any = {};
+         props.box.colors.forEach((color) => {
+            props.box.variants.forEach((variant) => {
+               classes[`${prefix}${color}-${variant}`] = boxGen.variant(variant, color, false, false, false);
+               classes[`${prefix}${color}-${variant}-hover`] = boxGen.variant(variant, color, true, false, true);
+               classes[`${prefix}${color}-${variant}-active`] = boxGen.variant(variant, color, true, true, true);
+            });
+         });
+         props.box.sizes.forEach((size) => {
+            classes[`${prefix}size-${size}`] = boxGen.size(size);
+         });
+         props.box.rounds.forEach((rounded) => {
+            classes[`${prefix}rounded-${rounded}`] = boxGen.rounded(rounded);
+         });
+         props.box.shadows.forEach((shadow) => {
+            props.box.colors.forEach((color) => {
+               classes[`${prefix}${color}-shadow-${shadow}`] = boxGen.shadow(shadow, color, false, false, false);
+               classes[`${prefix}${color}-shadow-${shadow}-hover`] = boxGen.shadow(shadow, color, true, false, true);
+               classes[`${prefix}${color}-shadow-${shadow}-active`] = boxGen.shadow(shadow, color, true, true, true);
+            });
+         });
+         return classes;
+      },
       // ============== FULL BOX GEN ===============
       full: (props: MistBoxGenProps = {
          color: 'primary',
@@ -84,7 +112,7 @@ const gen = {
 
          
          // trim all white to just one space 
-         base_class = base_class.replace(/\s+/g, ' ').trim();
+         base_class = format.text.trim(base_class);
 
          return base_class;
       }
