@@ -54,7 +54,7 @@ export type MistThemeProperties = {
 };
 
 export type MistBoxGenProps = {
-   color: MistColorProp;
+   color: MistColorProp|"custom";
    variant: MistVariantProp;
    size: MistSizeProp;
    rounded: MistRoundedProp;
