@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+package.unused.txt
 /build
 /dist
 /.svelte-kit
