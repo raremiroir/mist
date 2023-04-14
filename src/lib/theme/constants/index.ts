@@ -37,17 +37,6 @@ export const mist = {
    },
 }
 
-export const tailwind = {
-   config: {
-      theme: {
-         // Breakpoints
-         screens: {
-            
-         }
-      }
-   }
-}
-
 export const classes = {
    transition: {
       base: `transition-all duration-300 ease-out`,
