@@ -1,4 +1,5 @@
 <script lang="ts">
+   import '$lib/theme/mist-theme.postcss';
    import '$src/app.postcss'
 
    import gen from '$lib/theme/generator';
@@ -10,9 +11,11 @@
    //    );
    // console.log(myColors);
 
-   const box = gen.box.full();
-   console.log(box);
+   const classes = gen.box.allClasses();
+   console.log(classes);
    
 </script>
 
-<slot/>
+<div class="">
+   <slot/>
+</div>
