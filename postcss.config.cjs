@@ -1,31 +1,23 @@
-const each = require('postcss-each')
-const simpleVars = require('postcss-simple-vars')
-const mediaMinmax = require('postcss-media-minmax')
-const nested = require('postcss-nested')
-const focus = require('postcss-focus')
-const darkThemeClass = require('postcss-dark-theme-class')
-const easings = require('postcss-easings')
-const mixins = require('postcss-mixins')
-const size = require('postcss-size')
+// const each = require('postcss-each')
+// const simpleVars = require('postcss-simple-vars')
+// const focus = require('postcss-focus')
+// const darkThemeClass = require('postcss-dark-theme-class')
 
-const autoprefixer = require('autoprefixer');
-const tailwindcss = require('tailwindcss');
+// const mediaMinmax = require('postcss-media-minmax')
+// const easings = require('postcss-easings')
+// const mixins = require('postcss-mixins')
+// const size = require('postcss-size')
 
-const config = {
-	plugins: [
-		each,
-		simpleVars,
-		mediaMinmax,
-		nested,
-		focus,
-		darkThemeClass,
-		easings,
-		mixins,
-		size,
+module.exports = {
+	plugins: {
+		'postcss-import': {},
+		'tailwindcss/nesting': 'postcss-nesting',
+		'postcss-each': {},
+		'postcss-simple-vars': {},
+		'postcss-focus': {},
+		'postcss-dark-theme-class': {},
 
-		autoprefixer,
-		tailwindcss
-	]
+		tailwindcss: {},
+		autoprefixer: {},
+	}
 };
-
-module.exports = config;
