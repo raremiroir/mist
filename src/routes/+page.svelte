@@ -1,3 +1,3 @@
-<div class="bg-red-500">
-   <h1 class="text-4xl">Page</h1>
+<div class="bg-success">
+   <h1 class="text-title-2xl font-">Page</h1>
 </div>
