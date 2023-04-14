@@ -1,6 +1,7 @@
 
 
 export const mist_config = {
+   prefix: "m",
    theme: {
       // Colors
       colors: {
