@@ -17,3 +17,8 @@ export type MistBorderSelector = {
    type: MistBorderType,
    size: MistBorderSize
 }
+
+export type MistAllBorders = {
+   types: MistBorderType[],
+   sizes: MistBorderSize[],
+}
