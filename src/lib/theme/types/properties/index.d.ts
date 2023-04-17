@@ -1,4 +1,4 @@
-import type { MistAllBorders, MistBorderType } from "./border";
+import type { MistAllBorders } from "./border";
 import type { ColorStyleState, MistColor, MistColors, MistShade, MistVariantStates } from "./color";
 import type { MistAllShadows } from "./shadow";
 import type { MistAllSizes, MistSizeSelector } from "./size";
