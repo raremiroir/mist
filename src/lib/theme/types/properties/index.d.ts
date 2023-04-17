@@ -1,7 +1,6 @@
-import type { MistAllBorders } from "./border";
+import type { MistBorderType } from "./border";
 import type { ColorStyleState, MistColor, MistColors, MistShade, MistVariantStates } from "./color";
-import type { MistAllShadows } from "./shadow";
-import type { MistAllSizes, MistSizeSelector } from "./size";
+import type { MistShadowTypes } from "./shadow";
 import type { MistVariant } from "./variant";
 
 export type MistSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
@@ -26,8 +25,9 @@ export type MistThemeProperties = {
       colors_shades: MistShade[],
       colorsDerived: MistColors[],
       variants: MistVariant[],
-      sizes: MistAllSizes,
-      borders: MistAllBorders,
-      shadows: MistAllShadows,
+      sizes: MistSize[],
+      types: MistComponentType[],
+      borders: MistBorderType[],
+      shadows: MistShadowTypes[],
    }
 };
