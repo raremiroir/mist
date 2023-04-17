@@ -1,6 +1,6 @@
 
 
-export const mist_config = {
+export const mist_config:any = {
    prefix: "m",
    theme: {
       // Colors
@@ -19,6 +19,15 @@ export const mist_config = {
             body: "Inter",
             title: "Inter",
             code: "Inter",
+         },
+         color_on: {
+            primary: "#fff",
+            secondary: "#fff",
+            tertiary: "#fff",
+            success: "#000",
+            warning: "#000",
+            error: "#fff",
+            surface: "#fff",
          }
       },
       // Breakpoints
