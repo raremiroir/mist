@@ -1,6 +1,6 @@
 import mist_config from "../../mist.config";
 import defaultTheme from 'tailwindcss/defaultTheme'
-import gen from "../generator/properties";
+import { colorGen } from "../generator/theme";
 
 const tailwind = {
    theme: {
@@ -56,7 +56,7 @@ const tailwind = {
             code: [mist_config.theme.font.family.code?? 'Inter', ...defaultTheme.fontFamily.mono],
          },
          // Colors
-         colors: gen.color.obj([
+         colors: colorGen([
             { name: 'primary', color: mist_config.theme.colors.primary },
             { name: 'secondary', color: mist_config.theme.colors.secondary },
             { name: 'tertiary', color: mist_config.theme.colors.tertiary },

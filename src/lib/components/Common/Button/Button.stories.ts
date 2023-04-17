@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
 import Button from './Button.svelte';
-import { props } from '$src/lib/theme/constants';
+import { mistThemeProperties as props } from '$src/lib/theme/constants/properties';
 
 // More on how to set up stories at: https://storybook.js.org/docs/svelte/writing-stories/introduction
 const meta = {
@@ -9,10 +9,10 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    color:    { control: { type: 'select' }, options: props.box.colors },
+    color:    { control: { type: 'select' }, options: props.box.colorsDerived },
     variant:  { control: { type: 'select' }, options: props.box.variants },
     size:     { control: { type: 'select' }, options: props.box.sizes },
-    rounded:  { control: { type: 'select' }, options: props.box.rounds },
+    rounded:  { control: { type: 'select' }, options: props.box.borders },
     shadow:   { control: { type: 'select' }, options: props.box.shadows },
   },
 } satisfies Meta<Button>;

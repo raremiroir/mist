@@ -1,8 +1,15 @@
 <script lang="ts">
+	import { boxGen } from '$src/lib/theme/generator/theme';
+  import formatText from '$src/lib/utils/formatters/text';
   import Ripple from '$lib/components/Actions/Ripple'
+  
   import type { ButtonType, LinkTarget, LinkRel } from '$lib/types/components/common';
-	import type { MistColorProp, MistRoundedProp, MistShadowProp, MistSizeProp, MistVariantProp } from '$src/lib/types/theme';
-	import gen from '$src/lib/theme/generator';
+	import type { MistSize } from '$src/lib/theme/types/properties';
+	import type { MistBorderType } from '$src/lib/theme/types/properties/border';
+	import type { MistColors } from '$src/lib/theme/types/properties/color';
+	import type { MistShadowTypes } from '$src/lib/theme/types/properties/shadow';
+	import type { MistVariant } from '$src/lib/theme/types/properties/variant';
+
 
   //====================================
   //======= FUNCTIONALITY PROPS ========
@@ -26,15 +33,15 @@
   //========= MAIN STYLE PROPS =========
   //====================================
   // What is the color of the button? (optional)
-  export let color: MistColorProp|"custom" = 'surface_alt';
+  export let color: MistColors|"custom" = 'surface_alt';
   // What is the variant of the button? (optional)
-  export let variant: MistVariantProp = 'fill'
+  export let variant: MistVariant = 'fill'
   // What is the size of the button? (optional)
-  export let size: MistSizeProp = 'md';
+  export let size: MistSize = 'md';
   // What kind of rounding should the button have? (optional)
-  export let rounded: MistRoundedProp = 'tile';
+  export let rounded: MistBorderType = 'tile';
   // What kind of shadow should the button have? (optional)
-  export let shadow: MistShadowProp = 'bevel';
+  export let shadow: MistShadowTypes = 'bevel';
   //====================================
   
   //====================================
@@ -74,25 +81,28 @@
   //====================================
   //========= GENERATE STYLES ==========
   //====================================
-  let btnStyle = gen.box.full({
+
+
+  let btnStyle = boxGen.box({
     color: color,
     variant: variant,
     size: size,
-    rounded: rounded,
+    type: 'btn',
+    border: rounded,
     shadow: shadow,
-    fx: { hover: true, active: true, focus: true },
+    fx: { hover: true, active: true },
     style: {
       block: block
     },
-    klass: klass
+    classes: klass
   })
 
-  let btnClass = `
+  let btnClass = formatText.trim(` 
     ${btnStyle}
     ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''}
     ${square ? 'aspect-square' : ''}
-    ${disabled ? 'disabled' : ''}
-  `.trim();
+    ${disabled ? 'disabled' : ''}`
+  ) 
 
   let btnProps = {
     id: id,

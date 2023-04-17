@@ -1,15 +1,15 @@
-import mist_config from "$src/lib/mist.config";
+import mist_config from "../../../mist.config";
 import { css } from "@emotion/css";
 
-import gen from "../../generator/properties";
 import type { MistThemeColors } from "../../types/properties/color";
-import formatColor from "$src/lib/utils/formatters/color";
+import formatColor from "../../../utils/formatters/color";
+import { colorGen } from "../../generator/theme";
 
 const colorArr = Object.keys(mist_config.theme.colors).map((key) => {
    return {color: mist_config.theme.colors[key], name: key};
 })
 /* @ts-ignore */
-export const mistColorsObj:ThemeColorsObject = gen.color.obj(colorArr);
+export const mistColorsObj:ThemeColorsObject = colorGen(colorArr);
 
 export const mistThemeColors:MistThemeColors = {
    bg: {
