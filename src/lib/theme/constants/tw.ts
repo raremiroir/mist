@@ -1,11 +1,10 @@
 import mist_config from "../../mist.config";
 import defaultTheme from 'tailwindcss/defaultTheme'
-import createShades from "colorshades";
-import gen from "../generator";
+import gen from "../generator/properties";
 
 const tailwind = {
    theme: {
-      // Breakpointse
+      // Breakpoints
       screens: mist_config.theme.screens,
       // Font Size
       fontSize: {
