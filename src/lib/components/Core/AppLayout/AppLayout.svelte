@@ -1,21 +1,13 @@
 <script lang="ts">
-   import '$lib/theme/mist-theme.postcss';
+   // import '$lib/theme/mist-theme.postcss';
    import '$src/app.postcss'
+   import '$src/lib/theme/generated/mist-theme.css'
 
-   import gen from '$lib/theme/generator';
-
-   // const myColors = gen.color.obj([
-   //    {color: '#54648e', name: 'primary'}, 
-   //    {color: '#54818e', name: 'secondary'}, 
-   //    {color: '#005544', name: 'tertiary'}]
-   //    );
-   // console.log(myColors);
-
-   const classes = gen.box.allClasses();
-   console.log(classes);
-   
+   import mistCss from '$src/lib/theme/generator/theme';
+   import insertCss from "$lib/utils/postcssParse";
+   insertCss({css: mistCss})
 </script>
 
-<div class="">
+<div>
    <slot/>
 </div>
