@@ -13,7 +13,6 @@ import mistThemeColors from "./color";
 import mistThemeSizes from "./size";
 import mistThemeBorder from "./border";
 import mistThemeShadow from "./shadow";
-import type { MistTransitions } from "../../types/transition";
 
 // import mist_config from "$src/lib/mist.config";
 
