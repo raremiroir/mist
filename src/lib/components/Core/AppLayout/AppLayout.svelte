@@ -5,9 +5,26 @@
 
    import mistCss from '$src/lib/theme/generator/theme';
    import insertCss from "$lib/utils/postcssParse";
+	import { Aside } from '$lib/components';
    insertCss({css: mistCss})
+
+   export let aside: boolean = false;
 </script>
 
 <div>
-   <slot/>
+   <slot name="header"/>
+
+   <div class="flex flex-row w-full">
+      {#if aside}
+         <Aside>
+            Bloop Aside
+         </Aside>
+      {/if}
+      
+      <main class="">
+         <slot/>
+      </main>
+   </div>
+
+   <slot name="footer"/>
 </div>
