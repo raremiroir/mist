@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { boxGen } from '$src/lib/theme/generator/theme';
-  import formatText from '$src/lib/utils/formatters/text';
+  import { boxGen } from '$lib/theme/generator';
   import Ripple from '$lib/components/Actions/Ripple'
   
   import type { ButtonType, LinkTarget, LinkRel } from '$lib/types/components/common';
@@ -33,7 +32,7 @@
   //========= MAIN STYLE PROPS =========
   //====================================
   // What is the color of the button? (optional)
-  export let color: MistColors|"custom" = 'surface_alt';
+  export let color: MistColors|"custom" = 'surface';
   // What is the variant of the button? (optional)
   export let variant: MistVariant = 'fill'
   // What is the size of the button? (optional)
@@ -82,8 +81,7 @@
   //========= GENERATE STYLES ==========
   //====================================
 
-
-  let btnStyle = boxGen.box({
+  let btnStyle = boxGen({
     color: color,
     variant: variant,
     size: size,
@@ -94,37 +92,42 @@
     style: {
       block: block
     },
-    classes: klass
+    classes: ''
   })
 
-  let btnClass = formatText.trim(` 
+  $: btnClass = ` 
     ${btnStyle}
     ${capitalize ? 'capitalize' : uppercase ? 'uppercase' : ''}
     ${square ? 'aspect-square' : ''}
-    ${disabled ? 'disabled' : ''}`
-  ) 
+    ${disabled ? 'disabled' : ''} 
+    hover:-translate-y-0.5 active:translate-y-0.5
+    ${klass}
+    `;
 
-  let btnProps = {
-    id: id,
-    ariaLabel: ariaLabel,
+
+  let btnComp = href? 'a' : 'button';
+  let btnProps = href ? {
     type: type,
-    class: btnClass,
+    disabled: disabled,
+    href: href,
+    target: target,
+    rel: rel,
+  } : {
+    type: type,
     disabled: disabled,
   }
 </script>
 
 
-{#if href}
-  <a 
-    {href} {target} {rel}
-    {...btnProps} use:Ripple={ripple}
-    on:click>
+<svelte:element 
+  {id} 
+  this={btnComp}
+  aria-label={ariaLabel} 
+  {...btnProps}  
+  class="{btnClass}" 
+  on:click
+>
+  <div use:Ripple={ripple}>
     <slot>Button</slot>
-  </a>
-{:else}
-  <button 
-    {...btnProps} use:Ripple={ripple}
-    on:click>
-    <slot>Button</slot>
-  </button>
-{/if}
+  </div>
+</svelte:element>
