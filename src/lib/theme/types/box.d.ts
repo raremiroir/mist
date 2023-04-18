@@ -15,6 +15,7 @@ export type MistBoxGenProps = {
    fx: {
       hover: boolean;
       active: boolean;
+      transition?: string;
    };
    style?: {
       block?: boolean;

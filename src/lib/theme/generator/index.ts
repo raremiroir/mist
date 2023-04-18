@@ -12,13 +12,14 @@ export const boxGen = (props: MistBoxGenProps = {
    fx: {
       hover: true,
       active: true,
-      transition: 'transition-all duration-300 ease-in-out'
+      transition: ' transition-all duration-300 ease-in-out'
    },
    style: {
       block: false
    },
    classes: ''
 }) => {
+
    // Variant
    let compClass = ` ${PREFIX}${props.variant}-${props.color}`;
    compClass += props.fx.hover ? ` ${PREFIX}${props.variant}-${props.color}-hover` : '';
@@ -47,7 +48,7 @@ export const boxGen = (props: MistBoxGenProps = {
    }
 
    // Transition
-   compClass += ` ${props.fx.transition}`;
+   compClass += ` ${props.fx.transition?? ' transition-all duration-300 ease-in-out'}`;
 
    // Width
    compClass += props.style?.block ? ` w-full` : ' w-fit';
