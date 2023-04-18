@@ -12,7 +12,7 @@ export type MistColors = MistColor | MistColorAdded;
 
 
 // Every color style needs all shades
-export type MistColorPalette = { [key in MistColors]: MistShades; };
+export type MistColorPalette = { [key in MistColor]: MistShades; };
 
 // Default color styles for the theme (bg, text, border, shadow)
 export type ColorStyleType = "bg" | "text" | "border" | "shadow";
