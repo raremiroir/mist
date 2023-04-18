@@ -1,23 +1,44 @@
-// const each = require('postcss-each')
-// const simpleVars = require('postcss-simple-vars')
-// const focus = require('postcss-focus')
-// const darkThemeClass = require('postcss-dark-theme-class')
-
-// const mediaMinmax = require('postcss-media-minmax')
-// const easings = require('postcss-easings')
-// const mixins = require('postcss-mixins')
-// const size = require('postcss-size')
+const tailwindcss = require('tailwindcss');
+const postcssImport = require('postcss-import');
+const postcssMixins = require('postcss-mixins');
+const postcssSimpleVars = require('postcss-simple-vars');
+const tailwindcssNesting = require('tailwindcss/nesting');
+const postcssNesting = require('tailwindcss/nesting');
+const postcssEach = require('postcss-each');
+const postcssAtRulesVariables = require('postcss-at-rules-variables');
+const postcssCustomProperties = require('postcss-custom-properties');
+const postcssFocus = require('postcss-focus');
+const postcssDarkThemeClass = require('postcss-dark-theme-class');
+const postcssNormalize = require('postcss-normalize');
+const postcssNano = require('cssnano');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
-	plugins: {
-		'postcss-import': {},
-		'tailwindcss/nesting': 'postcss-nesting',
-		'postcss-each': {},
-		'postcss-simple-vars': {},
-		'postcss-focus': {},
-		'postcss-dark-theme-class': {},
-
-		tailwindcss: {},
-		autoprefixer: {},
-	}
+	// map: true,
+	plugins: [
+		postcssImport,
+		postcssMixins,
+		postcssNormalize,
+		postcssSimpleVars({
+			silent: false,
+		}),
+		tailwindcssNesting(postcssNesting),
+		postcssEach({
+			plugins: {
+				afterEach: [
+					postcssAtRulesVariables,
+				],
+				beforeEach: [
+					postcssCustomProperties,
+				]
+			 }
+		}),
+		// 'postcss-focus': {},
+		// 'postcss-dark-theme-class': {},
+		postcssNano({
+			preset: 'default',
+		}),
+		tailwindcss,
+		autoprefixer,
+	]
 };
