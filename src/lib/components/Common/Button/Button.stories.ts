@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 
 import Button from './Button.svelte';
-import { mistThemeProperties as props } from '$src/lib/theme/constants/properties';
+import { mistVariables } from '$src/lib/theme/variables';
+const props = mistVariables.base;
 
 // More on how to set up stories at: https://storybook.js.org/docs/svelte/writing-stories/introduction
 const meta = {
@@ -9,11 +10,11 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   argTypes: {
-    color:    { control: { type: 'select' }, options: props.box.colorsDerived },
-    variant:  { control: { type: 'select' }, options: props.box.variants },
-    size:     { control: { type: 'select' }, options: props.box.sizes },
-    rounded:  { control: { type: 'select' }, options: props.box.borders },
-    shadow:   { control: { type: 'select' }, options: props.box.shadows },
+    color:    { control: { type: 'select' }, options: props.allColors },
+    variant:  { control: { type: 'select' }, options: props.const.variants.types },
+    size:     { control: { type: 'select' }, options: props.const.sizes },
+    border:  { control: { type: 'select' }, options: props.const.borders },
+    shadow:   { control: { type: 'select' }, options: props.const.shadows },
   },
 } satisfies Meta<Button>;
 
@@ -26,7 +27,7 @@ export const Primary: Story = {
     color: 'primary',
     variant: 'fill',
     size: 'md',
-    rounded: 'tile',
+    border: 'tile',
     shadow: 'bevel',
   },
 };
