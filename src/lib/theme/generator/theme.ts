@@ -4,12 +4,20 @@ import mist_config from "../../mist.config";
 import generateSize from "./properties/size";
 import generateBorder from "./properties/border";
 import generateShadow from "./properties/shadow";
+import formatColor from "$src/lib/utils/formatters/color";
 
 const PREFIX = mist_config.prefix ? mist_config.prefix + "-" : "";
 
-let mistCss = ` .${PREFIX}bg { background-color: green; color: gold; }`;
+let mistCss = ``;
 
 const { variants, colors, types, sizes, borders, shadows } = mistVariables.base.const;
+
+// Root styles
+mistCss += `:root { 
+   ::selection {
+      background-color: rgba(${formatColor.hex.toRgbRawString(mist_config.theme.colors.primary[500])}, 0.4);
+   }
+ }`;
 
 // Generate variants
 variants.types.forEach((variant) => {
@@ -23,12 +31,18 @@ variants.types.forEach((variant) => {
 sizes.forEach((size) => {
    // Generate types sizes
    types.forEach((type) => {
-      mistCss += ` .${PREFIX}${type}-${size} { ${generateSize({ type, size })}; }`;
+      mistCss += type === "btn"
+         ? ` .${PREFIX}${type}-${size} { ${generateSize({ type, size })} cursor: pointer; user-select: none; }`
+         : ` .${PREFIX}${type}-${size} { ${generateSize({ type, size })} }`;
    });
 
    // Generate borders
    borders.forEach((border) => {
-      mistCss += ` .${PREFIX}border-${border}-${size} { ${generateBorder({ type: border, size })}; }`;
+      if (border === "none") {
+         mistCss += ` .${PREFIX}border-none { border: none; }`;
+      } else {
+         mistCss += ` .${PREFIX}border-${border}-${size} { ${generateBorder({ type: border, size })}; }`;
+      }
    });
 
    // Generate shadows
