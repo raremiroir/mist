@@ -6,13 +6,16 @@ const generateSize = ( props: MistSizeSelector = {
    type: 'btn',
    size: 'md'
 } ) => {
-   if (props.size === 'none' || props.type === 'none') return ` padding: 0;`;
-   if (props.type === 'text') return mistThemeSizes.text[props.size];
+   let sizeClass = ''
+   if (props.size === 'none' || props.type === 'none') {
+      sizeClass = ` padding: 0;`;
+   } else if (props.type === 'text') {
+      sizeClass = mistThemeSizes.text[props.size];
+   } else {
+      sizeClass = ` ${mistThemeSizes[props.type][props.size]} ${mistThemeSizes.text[props.size]}`;
+   }
    
-   return `
-      ${mistThemeSizes[props.type][props.size]} 
-      ${mistThemeSizes.text[props.size]}
-   `;
+   return sizeClass;
 } 
 
 export default generateSize;
