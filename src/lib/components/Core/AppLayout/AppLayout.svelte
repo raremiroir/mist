@@ -21,7 +21,7 @@
          </Aside>
       {/if}
       
-      <main class="">
+      <main class="w-full">
          <slot/>
       </main>
    </div>
