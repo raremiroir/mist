@@ -12,20 +12,20 @@ export const mistThemeShadow: MistThemeShadows = {
       '2xl': `0 20px 25px -5px`, // 25px
    },
    bevel: { 
-      xs:    `-2px 2px 0px 2px`, // 2px
-      sm:    `-4px 4px 0px 4px`, // 4px
-      md:    `-6px 6px 0px 6px`, // 6px
-      lg:    `-8px 8px 0px 8px`, // 8px
-      xl:    `-12px 12px 0px 12px`, // 12px
-      '2xl': `-16px 16px 0px 16px`, // 16px
+      xs:    `-1px 1px 0px 1px`, // 2px
+      sm:    `-1.5px 1.5px 0px 1.5px`, // 4px
+      md:    `-2px 2px 0px 2px`, // 6px
+      lg:    `-2.5px 2.5px 0px 2.5px`, // 8px
+      xl:    `-3px 3px 0px 3px`, // 12px
+      '2xl': `-3.5px 3.5px 0px 3.5px`, // 16px
    },
    'bevel-inner': {
-      xs:    `inset 2px -2px 0px 2px`,  // 2px
-      sm:    `inset 4px -4px 0px 4px`,  // 4px
-      md:    `inset 6px -6px 0px 6px`,  // 6px
-      lg:    `inset 8px -8px 0px 8px`,  // 8px
-      xl:    `inset 12px -12px 0px 12px`,  // 12px
-      '2xl': `inset 16px -16px 0px 16px`,  // 16px
+      xs:    `inset 1px -1px 0px 1px`,  // 2px
+      sm:    `inset 1.5px -1.5px 0px 1.5px`,  // 4px
+      md:    `inset 2px -2px 0px 2px`,  // 6px
+      lg:    `inset 2.5px -2.5px 0px 2.5px`,  // 8px
+      xl:    `inset 3px -3px 0px 3px`,  // 12px
+      '2xl': `inset 3.5px -3.5px 0px 3.5px`,  // 16px
    },
 }
 
