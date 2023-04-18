@@ -38,7 +38,7 @@
   // What is the size of the button? (optional)
   export let size: MistSize = 'md';
   // What kind of rounding should the button have? (optional)
-  export let rounded: MistBorderType = 'tile';
+  export let border: MistBorderType = 'tile';
   // What kind of shadow should the button have? (optional)
   export let shadow: MistShadowTypes = 'bevel';
   //====================================
@@ -86,7 +86,7 @@
     variant: variant,
     size: size,
     type: 'btn',
-    border: rounded,
+    border: border,
     shadow: shadow,
     fx: { hover: true, active: true },
     style: {
@@ -125,9 +125,8 @@
   aria-label={ariaLabel} 
   {...btnProps}  
   class="{btnClass}" 
+  use:Ripple={ripple}
   on:click
 >
-  <div use:Ripple={ripple}>
-    <slot>Button</slot>
-  </div>
+  <slot>Button</slot>
 </svelte:element>
