@@ -1,6 +1,5 @@
 import mist_config from "../../mist.config";
 import defaultTheme from 'tailwindcss/defaultTheme'
-import { colorGen } from "../generator/theme";
 
 const tailwind = {
    theme: {
@@ -56,15 +55,7 @@ const tailwind = {
             code: [mist_config.theme.font.family.code?? 'Inter', ...defaultTheme.fontFamily.mono],
          },
          // Colors
-         colors: colorGen([
-            { name: 'primary', color: mist_config.theme.colors.primary },
-            { name: 'secondary', color: mist_config.theme.colors.secondary },
-            { name: 'tertiary', color: mist_config.theme.colors.tertiary },
-            { name: 'success', color: mist_config.theme.colors.success },
-            { name: 'warning', color: mist_config.theme.colors.warning },
-            { name: 'error', color: mist_config.theme.colors.error },
-            { name: 'surface', color: mist_config.theme.colors.surface },
-         ]),
+         colors: mist_config.theme.colors,
          // Opacity
          opacity: {
             1: '.01', 1.5: '.015', 2: '.02', 2.5: '.025', 3: '.03', 3.5: '.035', 4: '.04', 
@@ -162,6 +153,22 @@ const tailwind = {
 				'medium': 'cubic-bezier(0.00, 0.86, 0.67, 1.59)',
 				'large':  'cubic-bezier(0.00, 1.89, 0.67, 1.59)',
 				'xlarge': 'cubic-bezier(0.00, 1.89, 0.52, 2.25)',
+
+            'cubic': 'cubic-bezier(0.4, 0, 0.2, 1)',
+            'cubic-in': 'cubic-bezier(0.5, 0, 0.95, 0.95)',
+            'cubic-out': 'cubic-bezier(0.05, 0.15, 0.45, 1)',
+            'cubic-in-out': 'cubic-bezier(0.5, 0.05, 0.5, 0.95)',
+
+            'expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+            'expo-in': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+            'expo-out': 'cubic-bezier(0.19, 1, 0.22, 1)',
+            'expo-in-out': 'cubic-bezier(1, 0, 0, 1)',
+
+            'bounce': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            'bounce-in': 'cubic-bezier(0.71, -0.46, 0.88, 0.6)',
+            'bounce-out': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            'bounce-in-out': 'cubic-bezier(0.86, 0, 0.07, 1)',
+
 			},
 			// Extended Keyframes
 			keyframes: {
