@@ -2,50 +2,54 @@ import { css } from "@emotion/css";
 import type { MistVariants } from "../../types/properties/variant";
 
 
-export const mistThemeVariants: MistVariants = {
+export const themeVariants = {
    // Fill
-   fill: {
-      default: css`background-opacity: 0.9; border-opacity: 0;`,
-      hover: css`&:hover { background-opacity: 0.95; }`,
-      active: css`&:hover { background-opacity: 1; }`,
+   fill: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0.9; border-opacity: 0;'
+      css += hover ? ' &:hover { background-opacity: 0.95; }' : '';
+      css += active ? ' &:active { background-opacity: 1; }' : '';
+      return css;
    },
    // Outline
-   outline: {
-      default: css`background-opacity: 0; border-opacity: 1;`,
-      hover: css`&:hover { background-opacity: 0.1; }`,
-      active: css`&:active { background-opacity: 0.2; }`,
+   outline: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0; border-opacity: 1;'
+      css += hover ? ' &:hover { background-opacity: 0.1; }' : '';
+      css += active ? ' &:active { background-opacity: 0.2; }' : '';
+      return css;
    },
    // Ghost
-   ghost: {
-      default: css`background-opacity: 0.1; border-opacity: 0;`,
-      hover: css`&:hover { background-opacity: 0.2; border-opacity: 1; }`,
-      active: css`&:active { background-opacity: 0.3; }`,
+   ghost: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0.1; border-opacity: 0;'
+      css += hover ? ' &:hover { background-opacity: 0.2; }' : '';
+      css += active ? ' &:active { background-opacity: 0.3; }' : '';
+      return css;
    },
    // Soft
-   soft: {
-      default: css`background-opacity: 0.1; border-opacity: 0;`,
-      hover: css`&:hover { background-opacity: 0.2; }`,
-      active: css`&:active { background-opacity: 0.3; }`,
+   soft: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0.1; border-opacity: 0;'
+      css += hover ? ' &:hover { background-opacity: 0.2; }' : '';
+      css += active ? ' &:active { background-opacity: 0.3; }' : '';
+      return css;
    },
    // Minimal
-   minimal: {
-      default: css`background-opacity: 0; border-opacity: 0;`,
-      hover: css`&:hover { background-opacity: 0.1; }`,
-      active: css`&:active { background-opacity: 0.2; }`,
+   minimal: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0; border-opacity: 0;'
+      css += hover ? ' &:hover { background-opacity: 0.1; }' : '';
+      css += active ? ' &:active { background-opacity: 0.2; }' : '';
+      return css;
    },
    // Link
-   link: {
-      default: css`background-opacity: 0; border-opacity: 0;`,
-      hover: css`&:hover { background-opacity: 0; border-bottom-opacity: 1; }`,
-      active: css`&:active { background-opacity: 0.1; }`,
+   link: (hover: boolean = false, active: boolean = false) => {
+      let css = ' background-opacity: 0; border-opacity: 0;'
+      css += hover ? ' &:hover { background-opacity: 0; border-bottom-opacity: 1; }' : '';
+      css += active ? ' &:active { background-opacity: 0.1; }' : '';
+      return css;
    },
-
    // Unstyled
-   unstyled: {
-      default: css``,
-      hover: css``,
-      active: css``,
+   unstyled: (hover: boolean = false, active: boolean = false) => {
+      let css = '';
+      return css;
    },
 }
 
-export default mistThemeVariants;
+export default themeVariants;
