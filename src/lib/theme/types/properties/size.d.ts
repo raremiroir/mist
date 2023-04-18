@@ -15,7 +15,7 @@ export type MistAllSizes = {
 }
 
 export type MistThemeSizes = {
-   [key in MistSizeType]: {
+   [key in MistComponentType]: {
       [key in MistSize]: string;
    };
 }
