@@ -1,76 +1,50 @@
+import { mistVariables } from "../variables";
+import { generateVariant } from "./properties/variant";
+import mist_config from "../../mist.config";
+import generateSize from "./properties/size";
+import generateBorder from "./properties/border";
+import generateShadow from "./properties/shadow";
 
-import { css } from "@emotion/css";
-import mistThemeProperties from "../constants/properties";
-import type { MistBoxGenProps } from "../types/box";
-import { propGen } from "./properties";
-import createShades from "colorshades";
+const PREFIX = mist_config.prefix ? mist_config.prefix + "-" : "";
 
-const defaultStyle: MistBoxGenProps = {
-   color: 'primary',
-   variant: 'fill',
-   size: 'md',
-   type: 'card',
-   border: 'tile',
-   shadow: 'bevel',
-   fx: {
-      hover: false,
-      active: false,
-   },
-   style: {
-      block: false,
-   },
-   classes: ''
-}
+let mistCss = ` .${PREFIX}bg { background-color: green; color: gold; }`;
 
-export const boxGen = {
-   // This is the main function that generates the styles for the box
-   box: (props:MistBoxGenProps = defaultStyle) => {
-      const variantClass = propGen.variant({
-         variant: props.variant,
-         color: props.color,
-         hover: props.fx?.hover ?? false,
-         active: props.fx?.active ?? false,
-      })
-      const sizeClass = propGen.size({
-         type: props.type,
-         size: props.size,
-      })
-      const borderClass = propGen.border({
-         size: props.size,
-         type: props.border,
-      })
-      const shadowClass = propGen.shadow({
-         color: props.color,
-         type: props.shadow,
-         size: props.size,
-         hover: props.fx?.hover ?? false,
-         active: props.fx?.active ?? false,
-      })
-      return css([
-         variantClass,
-         sizeClass,
-         borderClass,
-         shadowClass,
-      ])
-   }
-}
+const { variants, colors, types, sizes, borders, shadows } = mistVariables.base.const;
 
-export const colorGen = (colors: {
-   color:string /* hex color */,
-   name:string /* name of color */,
-}[]) => {
-
-   const amount = mistThemeProperties.box.colors_shades.length;
-   const colorsObj: {[key:string]: {[key:string]:string}} = {};
-   
-   colors.forEach((color) => {
-      var shades = createShades(color.color, amount); 
-      let shadesObj: {[key:string]: string} = {};
-      shades.colors.forEach((shade:any) => {
-         shadesObj[`${shade.index}`] = shade.hex;
-      });
-      shadesObj['DEFAULT'] = shadesObj['500'];
-      colorsObj[color.name] = shadesObj;
+// Generate variants
+variants.types.forEach((variant) => {
+   colors.types.base.forEach((color) => {
+      mistCss += ` .${PREFIX}${variant}-${color} { ${generateVariant({ variant, color, hover: false, active: false })}; }`;
+      mistCss += ` .${PREFIX}${variant}-${color}-hover { ${generateVariant({ variant, color, hover: true, active: false })}; }`;
+      mistCss += ` .${PREFIX}${variant}-${color}-active { ${generateVariant({ variant, color, hover: false, active: true })}; }`;
    });
-   return colorsObj;
-}
+});
+
+sizes.forEach((size) => {
+   // Generate types sizes
+   types.forEach((type) => {
+      mistCss += ` .${PREFIX}${type}-${size} { ${generateSize({ type, size })}; }`;
+   });
+
+   // Generate borders
+   borders.forEach((border) => {
+      mistCss += ` .${PREFIX}border-${border}-${size} { ${generateBorder({ type: border, size })}; }`;
+   });
+
+   // Generate shadows
+   shadows.forEach((shadow) => {
+      if (shadow === "none") {
+         mistCss += ` .${PREFIX}shadow-none { box-shadow: none; }`;
+      } else {
+         let shadowName = shadow === "default" ? "" : `-${shadow}`;
+         colors.types.base.forEach((color) => {
+            let colorName = shadow === "default" ? "" : `-${color}`;
+            mistCss += ` .${PREFIX}shadow${shadowName}-${size}${colorName} { ${generateShadow({ color, type: shadow, size, hover: false, active: false })} }`;
+            mistCss += ` .${PREFIX}shadow${shadowName}-${size}${colorName}-hover { ${generateShadow({ color, type: shadow, size, hover: true, active: false })} }`;
+            mistCss += ` .${PREFIX}shadow${shadowName}-${size}${colorName}-active { ${generateShadow({ color, type: shadow, size, hover: false, active: true })} }`;
+         });
+      }
+   });
+});
+
+export default mistCss;
