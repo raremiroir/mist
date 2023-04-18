@@ -3,6 +3,33 @@
 export const mist_config:any = {
    prefix: "m",
    theme: {
+      // Font
+      font: {
+         family: {
+            body: "Inter",
+            title: "Inter",
+            code: "Inter",
+         },
+         color_on: {
+            primary: "#fff",
+            secondary: "#fff",
+            tertiary: "#fff",
+            success: "#000",
+            warning: "#000",
+            error: "#fff",
+            surface: "#fff",
+         }
+      },
+      // Breakpoints
+      screens: {
+         'xs':  '320px',
+         'sm':  '480px',
+         'md':  '768px',
+         'lg':  '992px',
+         'xl':  '1200px',
+         '2xl': '1440px',
+         '3xl': '1920px',
+      },
       // Colors
       colors: {
          primary: {
@@ -103,33 +130,6 @@ export const mist_config:any = {
             900: "#0D0F12",
             950: "#060809"
          },
-      },
-      // Font
-      font: {
-         family: {
-            body: "Inter",
-            title: "Inter",
-            code: "Inter",
-         },
-         color_on: {
-            primary: "#fff",
-            secondary: "#fff",
-            tertiary: "#fff",
-            success: "#000",
-            warning: "#000",
-            error: "#fff",
-            surface: "#fff",
-         }
-      },
-      // Breakpoints
-      screens: {
-         'xs':  '320px',
-         'sm':  '480px',
-         'md':  '768px',
-         'lg':  '992px',
-         'xl':  '1200px',
-         '2xl': '1440px',
-         '3xl': '1920px',
       },
    }
    
