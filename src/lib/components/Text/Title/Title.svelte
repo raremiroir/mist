@@ -39,6 +39,6 @@
 
 <svelte:element 
    this={compType}
-   class="font-title {sizeClass} {colorClass} {weightClass} {klass} text-title-">
+   class="p-0 leading-[1.1em] font-title {sizeClass} {colorClass} {weightClass} {klass}">
    <slot>Title</slot>
 </svelte:element>
