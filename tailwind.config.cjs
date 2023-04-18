@@ -1,5 +1,5 @@
 const shades = require("colorshades/tailwind");
-import mist from './src/lib/theme/constants/tw'
+import mist from './src/lib/theme/tailwind/theme'
 
 /** @type {import('tailwindcss').Config} */
 export default {
