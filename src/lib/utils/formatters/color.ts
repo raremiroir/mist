@@ -43,7 +43,10 @@ const formatColor = {
         h /= 6;
       }
       return {h: h * 360, s: s * 100, l: l * 100};
-    }
+    },
+    toRgbRawString: (hex:string) => {
+        return formatColor.rgb.toRawString(formatColor.hex.toRgb(hex));
+    },
   },
   hsl: {
     toHex: (h:number, s:number, l:number) => {
