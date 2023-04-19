@@ -6,7 +6,7 @@
 	import type { MistSize } from '$src/lib/theme/types/properties';
 	import type { MistBorderType } from '$src/lib/theme/types/properties/border';
 	import type { MistColors } from '$src/lib/theme/types/properties/color';
-	import type { MistShadowTypes } from '$src/lib/theme/types/properties/shadow';
+	import type { MistShadowType } from '$src/lib/theme/types/properties/shadow';
 	import type { MistVariant } from '$src/lib/theme/types/properties/variant';
 
 
@@ -40,7 +40,7 @@
   // What kind of rounding should the button have? (optional)
   export let border: MistBorderType = 'tile';
   // What kind of shadow should the button have? (optional)
-  export let shadow: MistShadowTypes = 'bevel';
+  export let shadow: MistShadowType = 'bevel';
   //====================================
   
   //====================================
