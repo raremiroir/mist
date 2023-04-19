@@ -21,12 +21,3 @@ export const mTransition = {
    slow: ' transition duration-500 ease-in-out',
    fast: ' transition duration-100 ease-in-out',
 }
-
-// All mist-tailwind styles exported
-const mtw = {
-   flex: mFlex,
-   transition: mTransition,
-   widths: mWidths,
-}
-
-export default mtw;

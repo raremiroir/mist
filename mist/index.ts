@@ -1,8 +1,12 @@
 import boxGen from "./theme/boxgen";
-import { MistBoxGenProps } from "./types/box";
+import type { MistBoxGenProps } from "./types/box";
 import formatColor from "./utils/formatters/color";
 import formatText from "./utils/formatters/text";
 
+import { mWidths, mFlex, mTransition } from './tailwind/styles'
+
+
+// Generator for box style
 export const gen = {
    box: (props: MistBoxGenProps = {
       color: 'primary',
@@ -25,6 +29,7 @@ export const gen = {
    }
 }
 
+// Utils (formatters, ...)
 export const utils = {
    format: {
       text: formatText,
@@ -63,4 +68,11 @@ export const utils = {
          }
       }
    }
+}
+
+// Tailwind preformatted classes
+export const mtw = {
+   flex: mFlex,
+   transition: mTransition,
+   widths: mWidths,
 }
