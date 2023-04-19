@@ -10,4 +10,4 @@ package.unused.txt
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/src/lib/theme/generated/mist-theme.css
+/mist/generated/*
