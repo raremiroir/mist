@@ -1,4 +1,4 @@
-import mist from './mist/tailwind/theme'
+import mist from './src/mist/tailwind/theme'
 
 /** @type {import('tailwindcss').Config} */
 export default {
