@@ -57,3 +57,5 @@ export const boxGen = (props: MistBoxGenProps = {
    
    return compClass
 }
+
+export default boxGen;
