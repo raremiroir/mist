@@ -1,4 +1,4 @@
-import type { MistComponentType, MistSize } from "../../index";
+import type { MistComponentType, MistSize } from "../../../types/theme";
 
 type NoSize = "none";
 export type MistSizes = MistSize | NoSize;

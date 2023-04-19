@@ -1,13 +1,13 @@
-import type { MistSize } from "../../index";
+import type { MistSize } from "../../../types/theme";
 import type { MistColors } from "../color/color";
 
 type ShadowNone = "none";
 type ShadowType = "default" | "bevel" | "bevel-inner";
-export type MistShadowTypes = ShadowType | ShadowNone;
+export type MistShadowType = ShadowType | ShadowNone;
 
 export type MistShadowSelector = {
    color: MistColors|"default"|"custom";
-   type: MistShadowTypes;
+   type: MistShadowType;
    size: MistSize;
    hover: boolean;
    active: boolean;
@@ -15,7 +15,7 @@ export type MistShadowSelector = {
 }
 
 export type MistAllShadows = {
-   types: MistShadowTypes[];
+   types: MistShadowType[];
    sizes: MistSize[];
 }
 

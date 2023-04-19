@@ -1,4 +1,4 @@
-import type { MistSize } from "../../index";
+import type { MistSize } from "../../../types/theme";
 
 type BorderNone = "none";
 type BorderCircle = "circle";
