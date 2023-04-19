@@ -6,6 +6,18 @@ import { allColors, themeConstants } from "../../variables/base";
 
 export const mistColorsObj:MistColorPalette = mist_config.theme.colors;
 
+/*@ts-ignore*/
+export const mistColorsObjRgb:MistColorPalette = themeConstants.colors.types.base.map((color) => {
+   return {
+      [color]: themeConstants.colors.shades.map((shade) => {
+         return {
+            [shade]: formatColor.hex.toRgbRawString(mistColorsObj[color][shade])
+         }
+      })
+   }
+});
+// console.log(mistColorsObjRgb);
+
 const makeColorStyle = {
    bg: () => {
       let bgObj:any = {};
