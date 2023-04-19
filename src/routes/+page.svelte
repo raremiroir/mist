@@ -1,6 +1,6 @@
 <script>
-	import { boxGen } from '$lib/theme/generator';
 	import { Button, Text, Title, Section, Page, Iconify, Accordeon, AccordeonItem } from '$lib/components';
+	// import { gen } from '$mist';
 </script>
 
 <div class="foo">
