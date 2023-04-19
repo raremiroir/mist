@@ -1,4 +1,4 @@
-import type { MistColor, MistShade } from "$src/lib/theme/types/properties/color"
+import type { MistColor, MistShade } from "../theme/properties/color/color"
 
 type MistThemeConfigRequired = {
    font: {
