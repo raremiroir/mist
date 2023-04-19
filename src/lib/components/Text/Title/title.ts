@@ -1,10 +1,10 @@
-import type { MistSize } from "$src/lib/theme/types/properties";
+import type { Mist } from '$mist/types'
 
 export type TitleType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export const title = {
    class: {
-      size: ( props: { type: TitleType, size: MistSize } = {
+      size: ( props: { type: TitleType, size: Mist.Props.Size.Type } = {
          type: 'h1',
          size: 'md'
       }) => {
