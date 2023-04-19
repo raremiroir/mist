@@ -1,5 +1,5 @@
 <script lang="ts">
-	import mtw from "$src/lib/theme/tailwind/styles";
+	import { mtw } from "$mist";
 	import NavItem from "./NavItem.svelte";
 	import Navigation from "./Navigation.svelte";
 	import type { NavItemType } from "./header";

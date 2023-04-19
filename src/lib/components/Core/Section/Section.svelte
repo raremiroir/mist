@@ -1,5 +1,5 @@
 <script lang='ts'>
-	import mtw from "$src/lib/theme/tailwind/styles";
+	import { mtw } from "$mist";
 	import { Title } from "$lib/components";
 	import type { SectionTitleBorder } from "./section";
 

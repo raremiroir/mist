@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { mFlex } from "$src/lib/theme/tailwind/styles";
+	import { mtw } from "$mist";
 
 
 </script>
 
 <nav>
-   <ul class="{mFlex.center} gap-2">
+   <ul class="{mtw.flex.center} gap-2">
       <slot/>
    </ul>
 </nav>

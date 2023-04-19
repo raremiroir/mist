@@ -3,13 +3,8 @@
 
    import { activeAccordeon } from "./accordeon";
    
-   import { Types } from '@mist';
-	import { boxGen } from "$src/lib/theme/generator";
-	import type { MistColors } from "$src/lib/theme/types/properties/color";
-	import type { MistVariant } from "$src/lib/theme/types/properties/variant";
-	import type { MistSize } from "$src/lib/theme/types/properties";
-	import type { MistBorderType } from "$src/lib/theme/types/properties/border";
-	import type { MistShadowType } from "$src/lib/theme/types/properties/shadow";
+   import type { Mist } from "$mist/types";
+   import { gen } from "$mist";
 
    export let id: number|string;
    export let title: string;
@@ -17,7 +12,7 @@
    export let icon: string = '';
    export let iconColor: string = 'text-primary-700'
 
-   export let style: { color: MistColors, variant: MistVariant, size: MistSize, border: MistBorderType, shadow: MistShadowType } = {
+   export let style: { color: Mist.Props.Color.All, variant: Mist.Props.Variant.Type, size: Mist.Props.Size.Type, border: Mist.Props.Border.Type, shadow: Mist.Props.Shadow.Type } = {
       color: 'surface',
       variant: 'ghost',
       size: 'md',
@@ -39,19 +34,20 @@
    }
 
    // CLASSES
-   const accStyle = boxGen({
-    color: style.color,
-    variant: style.variant,
-    size: style.size,
-    type: 'card',
-    border: style.border,
-    shadow: style.shadow,
-    fx: { hover: true, active: true },
-    style: {
-      block: true
-    },
-    classes: ''
-  })
+   const boxProps:Mist.BoxGen.Props = {
+      color: style.color,
+      variant: style.variant,
+      size: style.size,
+      type: 'card',
+      border: style.border,
+      shadow: style.shadow,
+      fx: { hover: true, active: true },
+      style: {
+        block: true
+      },
+      classes: ''
+   }
+   const accStyle = gen.box(boxProps);
 
    const accWrapClass = `
       ${accStyle}

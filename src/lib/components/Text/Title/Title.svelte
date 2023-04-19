@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { MistSize } from "$src/lib/theme/types/properties";
+	import type { Mist } from "$mist/types";
 	import title from "./title";
 	import type { TitleType } from "./title";
 
@@ -13,7 +13,7 @@
    // Make it a span
    export let fake: boolean = false;
    // Pick a size (sm, md, lg, xl, 2xl)
-   export let size:MistSize = '2xl'
+   export let size:Mist.Props.Size.Type = '2xl'
    // Override color
    export let color: string = '';
    // Override weight

@@ -1,13 +1,10 @@
-<script lang="ts">
-  import { boxGen } from '$lib/theme/generator';
-  import Ripple from '$lib/components/Actions/Ripple'
+
+<script lang="ts">  
+  import { gen } from '$mist'
+  import Ripple from '$src/lib/components/Actions/Ripple'
   
+  import type { Mist } from '$mist/types';
   import type { ButtonType, LinkTarget, LinkRel } from '$lib/types/components/common';
-	import type { MistSize } from '$src/lib/theme/types/properties';
-	import type { MistBorderType } from '$src/lib/theme/types/properties/border';
-	import type { MistColors } from '$src/lib/theme/types/properties/color';
-	import type { MistShadowType } from '$src/lib/theme/types/properties/shadow';
-	import type { MistVariant } from '$src/lib/theme/types/properties/variant';
 
 
   //====================================
@@ -32,15 +29,15 @@
   //========= MAIN STYLE PROPS =========
   //====================================
   // What is the color of the button? (optional)
-  export let color: MistColors|"custom" = 'surface';
+  export let color: Mist.Props.Color.All|"custom" = 'surface';
   // What is the variant of the button? (optional)
-  export let variant: MistVariant = 'fill'
+  export let variant: Mist.Props.Variant.Type     = 'fill'
   // What is the size of the button? (optional)
-  export let size: MistSize = 'md';
+  export let size: Mist.Props.Size.Type           = 'md';
   // What kind of rounding should the button have? (optional)
-  export let border: MistBorderType = 'tile';
+  export let border: Mist.Props.Border.Type       = 'tile';
   // What kind of shadow should the button have? (optional)
-  export let shadow: MistShadowType = 'bevel';
+  export let shadow: Mist.Props.Shadow.Type       = 'bevel';
   //====================================
   
   //====================================
@@ -81,7 +78,7 @@
   //========= GENERATE STYLES ==========
   //====================================
 
-  let btnStyle = boxGen({
+  let boxProperties:Mist.BoxGen.Props = {
     color: color,
     variant: variant,
     size: size,
@@ -93,7 +90,8 @@
       block: block
     },
     classes: ''
-  })
+  }
+  let btnStyle = gen.box(boxProperties);
 
   $: btnClass = ` 
     ${btnStyle}
