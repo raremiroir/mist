@@ -8,24 +8,24 @@ import { mWidths, mFlex, mTransition } from './tailwind/styles'
 
 // Generator for box style
 export const gen = {
-   box: (props: MistBoxGenProps = {
-      color: 'primary',
-      variant: 'fill',
-      size: 'xs',
-      type: 'btn',
-      border: 'tile',
-      shadow: 'bevel-inner',
-      fx: {
-         hover: true,
-         active: true,
-         transition: ' transition-all duration-300 ease-in-out'
-      },
-      style: {
-         block: false
-      },
-      classes: ''
-   }) => {
-      boxGen(props);
+   box: (props: MistBoxGenProps) => {
+      return boxGen({
+         color: props.color,
+         variant: props.variant,
+         size: props.size,
+         type: props.type,
+         border: props.border,
+         shadow: props.shadow,
+         fx: {
+            hover: props.fx.hover,
+            active: props.fx.active,
+            transition: props.fx.transition? props.fx.transition : ' transition-all duration-300 ease-in-out',
+         },
+         style: {
+            block: props.style?.block? props.style.block : false
+         },
+         classes: props.classes? props.classes : ''
+      });
    }
 }
 
