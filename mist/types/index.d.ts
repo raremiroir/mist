@@ -1,21 +1,35 @@
-import { MistBorderType } from "../theme/properties/border/border";
-import { MistColor, MistColorAdded, MistColors, MistShade } from "../theme/properties/color/color"
-import { MistShadowType } from "../theme/properties/shadow/shadow";
-import { MistVariant } from "../theme/properties/variant/variant";
-import { MistComponentType, MistSize } from "./theme";
+import type { MistBoxGenProps } from "./box";
+import type { MistComponentType, MistSize } from "./theme";
+import type { MistColor, MistColorAdded, MistColors, MistShade } from "../theme/properties/color/color"
+import type { MistVariant } from "../theme/properties/variant/variant";
+import type { MistBorderType } from "../theme/properties/border/border";
+import type { MistShadowType } from "../theme/properties/shadow/shadow";
 
-declare module "@mist" {
-   export const Types: {
-      Color: {
-         Shade: MistShade;
-         BaseColor: MistColor;
-         ExtColor: MistColorAdded;
-         Color: MistColors;
+export namespace Mist {
+   export namespace BoxGen {
+      export type Props = MistBoxGenProps
+   }
+   export namespace Props {
+      export namespace Color {
+         export type Shade = MistShade;
+         export type Base = MistColor;
+         export type Ext = MistColorAdded;
+         export type All = MistColors;
       }
-      Variant: MistVariant;
-      Size: MistSize;
-      ComponentType: MistComponentType;
-      Border: MistBorderType;
-      Shadow: MistShadowType;
+      export namespace Variant {
+         export type Type = MistVariant;
+      }
+      export namespace Size {
+         export type Type = MistSize;
+      }
+      export namespace ComponentType {
+         export type Type = MistComponentType;
+      }
+      export namespace Border {
+         export type Type = MistBorderType;
+      }
+      export namespace Shadow {
+         export type Type = MistShadowType;
+      }
    }
 }
