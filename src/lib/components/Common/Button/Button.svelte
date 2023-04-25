@@ -122,9 +122,10 @@
   this={btnComp}
   aria-label={ariaLabel} 
   {...btnProps}  
-  class="{btnClass}" 
-  use:Ripple={ripple}
+  class="{btnClass} overflow-hidden" 
   on:click
 >
-  <slot>Button</slot>
+  <div use:Ripple={ripple} class=" text-inherit">
+    <slot>Button</slot>
+  </div>
 </svelte:element>

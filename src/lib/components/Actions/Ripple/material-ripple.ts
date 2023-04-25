@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 /**
  * Options for customizing ripples
  */
