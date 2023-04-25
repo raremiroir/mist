@@ -29,9 +29,9 @@ export const mistThemeShadow: MistThemeShadows = {
 }
 
 export const mistThemeShadowOpacities: MistThemeShadowOpacities = {
-   default: `0.05`,
-   bevel: `0.5`,
-   'bevel-inner': `0.5`,
+   default: `0.1`,
+   bevel: `1`,
+   'bevel-inner': `1`,
 }
 
 export default mistThemeShadow;

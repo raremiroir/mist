@@ -17,7 +17,7 @@ export const mistThemeBorder: MistThemeBorder = {
       md:    ` border-radius: 0.5rem 0.175rem 0.5rem 0.175rem;`,
       lg:    ` border-radius: 0.75rem 0.25rem 0.75rem 0.25rem;`,
       xl:    ` border-radius: 1rem 0.25rem 1rem 0.25rem;`,
-      '2xl': ` border-radius: 1.5rem 0.375rem 1.5rem 0.375rem;`,
+      '2xl': ` border-radius: 1rem 0.375rem 1rem 0.375rem;`,
    }
 }
 
