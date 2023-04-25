@@ -35,7 +35,7 @@ const postcssPlugins = [
 ]
 
 const fileOrigin = './generate-theme.css'
-const fileLocation = 'mist/generated/mist-theme.css'
+const fileLocation = 'src/mist/generated/mist-theme.css'
 
 try {
    var result = postcss.parse(mistCss.toString(), {

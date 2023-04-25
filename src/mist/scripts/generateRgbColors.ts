@@ -2,8 +2,8 @@ import fs from 'fs';
 import mist_config from '../mist.config';
 import formatColor from '../utils/formatters/color';
 
-const destinationHex = 'mist/generated/mist-colors_hex.ts';
-const destinationRgb = 'mist/generated/mist-colors_rgb.ts';
+const destinationHex = 'src/mist/generated/mist-colors_hex.ts';
+const destinationRgb = 'src/mist/generated/mist-colors_rgb.ts';
 
 const colors = mist_config.theme.colors;
 
