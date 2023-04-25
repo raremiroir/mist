@@ -12,8 +12,8 @@ const makeColorStyle = {
       themeConstants.colors.types.base.forEach((color) => {
          bgObj[color] = (opacity:string = '0.9', hover:string = '', active:string = '') => {
             let css = ` background-color: rgba(${mistColorsRgb[color][500]}, ${opacity});`
-            css += hover !== ''  ? ` &:hover  { background-color: rgba(${mistColorsRgb[color][600]}, ${hover}); }` : '';
-            css += active !== '' ? ` &:active { background-color: rgba(${mistColorsRgb[color][700]}, ${active}); }` : '';
+            css += !!hover || !!active ? ` &:hover  { background-color: rgba(${mistColorsRgb[color][600]}, ${hover}); }` : '';
+            css += !!active ? ` &:active { background-color: rgba(${mistColorsRgb[color][700]}, ${active}); }` : '';
             return css;
          }
       })
@@ -23,9 +23,9 @@ const makeColorStyle = {
       let textObj:any = {};
       themeConstants.colors.types.base.forEach((color) => {
          textObj[color] = (on:boolean = false, hover:boolean = false, active:boolean = false) => {
-            let css = on ? ` color: ${mist_config.theme.font.color_on[color]};` : ` color: ${mistColorsHex[color][500]};`
-            css += hover && !on ? ` &:hover { color: ${mistColorsHex[color][600]}; }` : '';
-            css += active && !on ? ` &:active { color: ${mistColorsHex[color][700]}; }` : '';
+            let css = on ? ` color: ${mist_config.theme.font.color_on[color]};` : ` color: rgba(${mistColorsRgb[color][500]}, 1);`
+            css += (hover && !on) || (active && !on) ? ` &:hover { color: rgba(${mistColorsRgb[color][600]}, 1); }` : '';
+            css += active && !on ? ` &:active { color: rgba(${mistColorsRgb[color][700]}, 1); }` : '';
             return css;
          }
       })
@@ -36,8 +36,8 @@ const makeColorStyle = {
       themeConstants.colors.types.base.forEach((color) => {
          borderObj[color] = (opacity:string = '0.9', hover:string = '', active:string = '') => {
             let css = ` border-color: rgba(${mistColorsRgb[color][500]}, ${opacity});`
-            css += hover !== ''  ? ` &:hover  { border-color: rgba(${mistColorsRgb[color][600]}, ${hover}); }` : '';
-            css += active !== '' ? ` &:active { border-color: rgba(${mistColorsRgb[color][700]}, ${active}); }` : '';
+            css += !!hover || !!active ? ` &:hover  { border-color: rgba(${mistColorsRgb[color][600]}, ${hover}); }` : '';
+            css += !!active ? ` &:active { border-color: rgba(${mistColorsRgb[color][700]}, ${active}); }` : '';
             return css;
          }
       })
